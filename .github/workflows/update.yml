@@ -1,0 +1,23 @@
+name: Update time
+
+on:
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Change
+        run: date -R > README.md
+
+      - name: Commit
+        run: git commit -am
+
+      - name: Push
+        run: git push
