@@ -5,7 +5,7 @@ on:
     - cron: '* * * * *'
 
 jobs:
-  release:
+  update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,7 +17,7 @@ jobs:
         run: date -R > README.md
 
       - name: Commit
-        run: git commit -am
+        run: git commit -am .
 
       - name: Push
         run: git push
